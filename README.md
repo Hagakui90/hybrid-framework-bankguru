@@ -1,2 +1,2 @@
-# Hybrid-Framework_BankGuru
+# Hybrid-Framework-BankGuru
 UI Automation Testing Framework for BankGuru project
