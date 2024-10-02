@@ -6,8 +6,10 @@ import java.util.Set;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -91,7 +93,7 @@ public class BasePage {
 		}
 
 	}
-
+ 
 	public void closeAllTabWithoutParent(WebDriver driver, String parentID) {
 		// Get hết ra các id đang có
 		Set<String> allWindowIDs = driver.getWindowHandles();
@@ -197,6 +199,65 @@ public class BasePage {
 		return getListWebElement(driver, locator).size();
 	}
 	
+	/** Apply for checkbox and radio button
+	 * @param driver
+	 * @param locator
+	 */
+	public void checkToElement(WebDriver driver, String locator) {
+		if (!getWebElement(driver, locator).isSelected()) {
+			getWebElement(driver, locator).click();
+		}
+	}
+	
+	/** Apply only for checkbox 
+	 * @param driver
+	 * @param locator
+	 */
+	public void uncheckToElement(WebDriver driver, String locator) {
+		if (getWebElement(driver, locator).isSelected()) {
+			getWebElement(driver, locator).click();
+		}
+	}
+	
+	public boolean isElementDisplayed(WebDriver driver, String locator) {
+		return getWebElement(driver, locator).isDisplayed();
+	}
+	
+	public boolean isElementSelected(WebDriver driver, String locator) {
+		return getWebElement(driver, locator).isSelected();
+	}
+	
+	public boolean isElementEnabled(WebDriver driver, String locator) {
+		return getWebElement(driver, locator).isEnabled();
+	}
+	
+	public void switchToIframe(WebDriver driver, String locator) {
+		driver.switchTo().frame(getWebElement(driver, locator));
+	}
+	
+	public void switchToDefaultContent(WebDriver driver) {
+		driver.switchTo().defaultContent();
+	}
+	
+	public void hoverToElement(WebDriver driver, String locator) {
+		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
+	}
+	
+	public void doubleClickToElement(WebDriver driver, String locator) {
+		new Actions(driver).doubleClick(getWebElement(driver, locator)).perform();
+	}
+	
+	public void rightClickToElement(WebDriver driver, String locator) {
+		new Actions(driver).contextClick(getWebElement(driver, locator)).perform();
+	}
+
+	public void dragAndDropElement(WebDriver driver, String sourceLocator, String targetLocator) {
+		new Actions(driver).dragAndDrop(getWebElement(driver, sourceLocator), getWebElement(driver, targetLocator)).perform();
+	}
+
+	public void sendKeyboardToElement(WebDriver driver, String locator, Keys key) {
+		new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
+	}
 	
 	
 }
