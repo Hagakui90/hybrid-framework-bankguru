@@ -159,7 +159,7 @@ public class BasePage {
 		return new Select(getWebElement(driver, locator)).getFirstSelectedOption().getText();
 	}
 
-	public boolean isDefaulDropdownMultiple(WebDriver driver, String locator) {
+	public boolean isDefaultDropdownMultiple(WebDriver driver, String locator) {
 		return new Select(getWebElement(driver, locator)).isMultiple();
 	}
 
