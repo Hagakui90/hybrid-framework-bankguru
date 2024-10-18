@@ -3,6 +3,7 @@ package com.bankguru.payment;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import pageObjects.AddCustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 
@@ -12,29 +13,46 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
-public class Payment extends BaseTest{
+public class Payment extends BaseTest {
 	private WebDriver driver;
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
-	
+	private AddCustomerPageObject addCustomerPage;
+	private String emailAddress = "Dannie" + generateFakeNumber() + "@mail.us";
+
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		loginPage = new LoginPageObject(driver);
-		
+
 		loginPage.enterToUserIDTextbox("mngr597812");
 		loginPage.enterToPassword("qUtUzAb");
-		
+
 		loginPage.clickToLoginButton();
 		homePage = new HomePageObject(driver);
-		System.out.println(homePage.getManagerIdTextAttributeValue());
-		Assert.assertEquals(homePage.getManagerIdTextAttributeValue(), "Manger Id : mngr597812");
+		Assert.assertEquals(homePage.getManagerIdText(), "Manger Id : mngr597812");
 	}
 
 	@Test
 	public void P1_Create_New_Customer_Successfully() {
-		
+		homePage.clickToAddNewCustomerLink();
+		addCustomerPage = new AddCustomerPageObject(driver);
+		Assert.assertEquals(addCustomerPage.getAddCustomerTextHeading(), "Add New Customer");
+
+		addCustomerPage.enterToCustomerNameTextbox("Dannie Zemlak IV");
+		addCustomerPage.enterToGenderRadioCheckbox("Female");
+		addCustomerPage.enterDateOfBirthPicker("10-06-1990");
+
+		/*
+		 * addCustomerPage.enterAddressTextbox("413 W Fireweed Ln"); addCustomerPage.enterCityTextbox("Anchorage");
+		 * addCustomerPage.enterStateTextbox("Alaska"); addCustomerPage.enterPINTextbox("783123");
+		 * addCustomerPage.enterMobileNumberTextbox("0842769114"); addCustomerPage.enterEmailTextbox(emailAddress);
+		 * addCustomerPage.enterPasswordTextbox("3454634");
+		 * 
+		 * addCustomerPage.clickToSubmitButton();
+		 */
+
 	}
 
 	@Test
@@ -77,7 +95,6 @@ public class Payment extends BaseTest{
 
 	}
 
-	
 	public void P10_Delete_Exist_Accounts() {
 
 	}

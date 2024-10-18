@@ -13,13 +13,20 @@ public class HomePageObject extends BasePage {
 	@FindBy(xpath = "//td[contains(text(),'Manger Id')]")
 	private WebElement heading3Text;
 	
+	@FindBy(xpath = "//a[text()='New Customer']")
+	private WebElement newCustomerLink;
+	
 	public HomePageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
 	}
-	public String getManagerIdTextAttributeValue() {
+	public String getManagerIdText() {
 		waitForElementVisible(driver, heading3Text);
 		return getElementText(driver, heading3Text);
+	}
+	public void clickToAddNewCustomerLink() {
+		waitForElementVisible(driver, newCustomerLink);
+		clickToElement(driver, newCustomerLink);
 	}
 
 }

@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
@@ -35,5 +36,8 @@ public class BaseTest {
 		return driver;
 	}
 	
-
+	protected int generateFakeNumber() {
+		Random rand = new Random();
+		return rand.nextInt(9999);
+	}
 }
