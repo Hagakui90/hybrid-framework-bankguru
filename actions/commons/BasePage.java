@@ -135,7 +135,7 @@ public class BasePage {
 	}
 
 	public void sendkeyToElement(WebDriver driver, WebElement element, String valueToSend) {
-		element.clear();
+		//element.clear();
 		element.sendKeys(valueToSend);
 	}
 

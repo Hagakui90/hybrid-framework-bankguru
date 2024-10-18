@@ -23,17 +23,18 @@ public class Payment extends BaseTest{
 		driver = getBrowserDriver(browserName);
 		loginPage = new LoginPageObject(driver);
 		
-		loginPage.enterToUserIDTextbox("mngr598039");
-		loginPage.enterToPassword("eduhevY");
+		loginPage.enterToUserIDTextbox("mngr597812");
+		loginPage.enterToPassword("qUtUzAb");
 		
 		loginPage.clickToLoginButton();
 		homePage = new HomePageObject(driver);
-		Assert.assertEquals(homePage.getManagerIdTextAttributeValue(), "Manger Id : mngr598039");
+		System.out.println(homePage.getManagerIdTextAttributeValue());
+		Assert.assertEquals(homePage.getManagerIdTextAttributeValue(), "Manger Id : mngr597812");
 	}
 
 	@Test
 	public void P1_Create_New_Customer_Successfully() {
-
+		
 	}
 
 	@Test
@@ -76,7 +77,7 @@ public class Payment extends BaseTest{
 
 	}
 
-	@Test
+	
 	public void P10_Delete_Exist_Accounts() {
 
 	}
