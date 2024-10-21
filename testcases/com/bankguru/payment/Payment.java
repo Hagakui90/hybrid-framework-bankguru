@@ -18,6 +18,7 @@ public class Payment extends BaseTest {
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
 	private AddCustomerPageObject addCustomerPage;
+	private InfoCustomerPageObject infoCustomerPage;
 	private String emailAddress = "Dannie" + generateFakeNumber() + "@mail.us";
 
 	@Parameters("browser")
@@ -44,14 +45,18 @@ public class Payment extends BaseTest {
 		addCustomerPage.enterToGenderRadioCheckbox("Female");
 		addCustomerPage.enterDateOfBirthPicker("10-06-1990");
 
-		/*
-		 * addCustomerPage.enterAddressTextbox("413 W Fireweed Ln"); addCustomerPage.enterCityTextbox("Anchorage");
-		 * addCustomerPage.enterStateTextbox("Alaska"); addCustomerPage.enterPINTextbox("783123");
-		 * addCustomerPage.enterMobileNumberTextbox("0842769114"); addCustomerPage.enterEmailTextbox(emailAddress);
-		 * addCustomerPage.enterPasswordTextbox("3454634");
-		 * 
-		 * addCustomerPage.clickToSubmitButton();
-		 */
+		addCustomerPage.enterAddressTextbox("413 W Fireweed Ln");
+		addCustomerPage.enterCityTextbox("Anchorage");
+		addCustomerPage.enterStateTextbox("Alaska");
+		addCustomerPage.enterPINTextbox("783123");
+		addCustomerPage.enterMobileNumberTextbox("0842769114");
+		addCustomerPage.enterEmailTextbox(emailAddress);
+		addCustomerPage.enterPasswordTextbox("3454634");
+
+		addCustomerPage.clickToSubmitButton();
+		
+		infoCustomerPage = new InfoCustomerPageObject(driver);
+		Assert.assertEquals(infoCustomerPage.getCustomerNameText(), "Dannie Zemlak IV");
 
 	}
 

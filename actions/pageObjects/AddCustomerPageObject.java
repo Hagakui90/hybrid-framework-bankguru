@@ -24,7 +24,31 @@ public class AddCustomerPageObject extends BasePage {
 
 	@FindBy(xpath = "//input[@type='date']")
 	private WebElement dateOfBirthPicker;
-
+	
+	@FindBy(xpath = "//td[text()='Address']/parent::tr//textarea")
+	private WebElement addressTextbox;
+	
+	@FindBy(xpath = "//td[text()='City']/parent::tr//input")
+	private WebElement cityTextbox;
+	
+	@FindBy(xpath = "//td[text()='State']/parent::tr//input")
+	private WebElement stateTextbox;
+	
+	@FindBy(xpath = "//td[text()='PIN']/parent::tr//input")
+	private WebElement pinTextbox;
+	
+	@FindBy(xpath = "//td[text()='Mobile Number']/parent::tr//input")
+	private WebElement mobileNumberTextbox;
+	
+	@FindBy(xpath = "//td[text()='E-mail']/parent::tr//input")
+	private WebElement emailTextbox;
+	
+	@FindBy(xpath = "//td[text()='Password']/parent::tr//input")
+	private WebElement passwordTextbox;
+	
+	@FindBy(css = "input[type='submit']")
+	private WebElement submitButton;
+	
 	public AddCustomerPageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
@@ -56,6 +80,47 @@ public class AddCustomerPageObject extends BasePage {
 	public void enterDateOfBirthPicker(String dateOfBirth) {
 		waitForElementClickable(driver, dateOfBirthPicker);
 		sendkeyToElement(driver, dateOfBirthPicker, dateOfBirth);
+	}
+
+	public void enterAddressTextbox(String address) {
+		waitForElementVisible(driver, addressTextbox);
+		sendkeyToElement(driver, addressTextbox, address);
+	}
+
+	public void enterCityTextbox(String city) {
+		waitForElementVisible(driver, cityTextbox);
+		sendkeyToElement(driver, cityTextbox, city);
+	}
+	
+
+	public void enterStateTextbox(String state) {
+		waitForElementVisible(driver, stateTextbox);
+		sendkeyToElement(driver, stateTextbox, state);		
+	}
+
+	public void enterPINTextbox(String pin) {
+		waitForElementVisible(driver, pinTextbox);
+		sendkeyToElement(driver, pinTextbox, pin);		
+	}
+
+	public void enterEmailTextbox(String emailAddress) {
+		waitForElementVisible(driver, emailTextbox);
+		sendkeyToElement(driver, emailTextbox, emailAddress);
+	}
+
+	public void enterMobileNumberTextbox(String mobileNumber) {
+		waitForElementVisible(driver, mobileNumberTextbox);
+		sendkeyToElement(driver, mobileNumberTextbox, mobileNumber);	
+	}
+
+	public void enterPasswordTextbox(String password) {
+		waitForElementVisible(driver, passwordTextbox);
+		sendkeyToElement(driver, passwordTextbox, password);		
+	}
+
+	public void clickToSubmitButton() {
+		waitForElementClickable(driver, submitButton);
+		clickToElement(driver, submitButton);
 	}
 
 }
