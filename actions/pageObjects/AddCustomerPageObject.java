@@ -55,7 +55,7 @@ public class AddCustomerPageObject extends BasePage {
 	}
 
 	public String getAddCustomerTextHeading() {
-		waitForElementInVisible(driver, newCustomerHeading);
+		waitForElementVisible(driver, newCustomerHeading);
 		return getElementText(driver, newCustomerHeading);
 
 	}

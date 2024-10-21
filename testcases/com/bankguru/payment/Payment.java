@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import pageObjects.AddCustomerPageObject;
 import pageObjects.HomePageObject;
+import pageObjects.InfoCustomerPageObject;
 import pageObjects.LoginPageObject;
 
 import org.testng.annotations.BeforeClass;
@@ -56,7 +57,13 @@ public class Payment extends BaseTest {
 		addCustomerPage.clickToSubmitButton();
 		
 		infoCustomerPage = new InfoCustomerPageObject(driver);
+		
+		Assert.assertEquals(infoCustomerPage.getHeadingText(), "Customer Registered Successfully!!!");
 		Assert.assertEquals(infoCustomerPage.getCustomerNameText(), "Dannie Zemlak IV");
+		Assert.assertEquals(infoCustomerPage.getBirthdateText(), "1989-10-02");
+		Assert.assertEquals(infoCustomerPage.getPinText(), "	783123");
+		Assert.assertEquals(infoCustomerPage.getMobileNumberText(), "0842769114");
+		Assert.assertEquals(infoCustomerPage.getEmailText(), "Dannie1989@mail.us");
 
 	}
 
