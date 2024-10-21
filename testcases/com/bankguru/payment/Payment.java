@@ -44,7 +44,7 @@ public class Payment extends BaseTest {
 
 		addCustomerPage.enterToCustomerNameTextbox("Dannie Zemlak IV");
 		addCustomerPage.enterToGenderRadioCheckbox("Female");
-		addCustomerPage.enterDateOfBirthPicker("10-06-1990");
+		addCustomerPage.enterDateOfBirthPicker("1990-10-06");
 
 		addCustomerPage.enterAddressTextbox("413 W Fireweed Ln");
 		addCustomerPage.enterCityTextbox("Anchorage");
@@ -53,17 +53,15 @@ public class Payment extends BaseTest {
 		addCustomerPage.enterMobileNumberTextbox("0842769114");
 		addCustomerPage.enterEmailTextbox(emailAddress);
 		addCustomerPage.enterPasswordTextbox("3454634");
-
 		addCustomerPage.clickToSubmitButton();
-		
 		infoCustomerPage = new InfoCustomerPageObject(driver);
 		
 		Assert.assertEquals(infoCustomerPage.getHeadingText(), "Customer Registered Successfully!!!");
 		Assert.assertEquals(infoCustomerPage.getCustomerNameText(), "Dannie Zemlak IV");
-		Assert.assertEquals(infoCustomerPage.getBirthdateText(), "1989-10-02");
-		Assert.assertEquals(infoCustomerPage.getPinText(), "	783123");
+		Assert.assertEquals(infoCustomerPage.getBirthdateText(), "1990-10-06");
+		Assert.assertEquals(infoCustomerPage.getPinText(), "783123");
 		Assert.assertEquals(infoCustomerPage.getMobileNumberText(), "0842769114");
-		Assert.assertEquals(infoCustomerPage.getEmailText(), "Dannie1989@mail.us");
+		Assert.assertEquals(infoCustomerPage.getEmailText(), emailAddress);
 
 	}
 
@@ -113,7 +111,7 @@ public class Payment extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-
+		// driver.quit();
 	}
 
 }

@@ -40,4 +40,12 @@ public class BaseTest {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
+	
+	public void sleepInSecond(long timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

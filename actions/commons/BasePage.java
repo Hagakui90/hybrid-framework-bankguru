@@ -317,7 +317,6 @@ public class BasePage {
 	}
 
 	public void waitForElementVisible(WebDriver driver, WebElement element) {
-		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void waitForListElementVisible(WebDriver driver, List<WebElement> element) {
@@ -335,4 +334,5 @@ public class BasePage {
 	public void waitForElementClickable(WebDriver driver, WebElement element) {
 		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
 }

@@ -34,7 +34,7 @@ public class InfoCustomerPageObject extends BasePage{
 	private WebElement emailText;
 	
 	public String getCustomerNameText() {
-		waitForElementInVisible(driver, customerNameText);
+		waitForElementVisible(driver, customerNameText);
 		return getElementText(driver, customerNameText);
 	}
 
