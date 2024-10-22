@@ -24,9 +24,10 @@ public class HomePageObject extends BasePage {
 		waitForElementVisible(driver, heading3Text);
 		return getElementText(driver, heading3Text);
 	}
-	public void clickToAddNewCustomerLink() {
+	public AddCustomerPageObject clickToAddNewCustomerLink() {
 		waitForElementVisible(driver, newCustomerLink);
 		clickToElement(driver, newCustomerLink);
+		return PageGeneratorManager.getAddCustomerPageObject(driver);
 	}
 
 }

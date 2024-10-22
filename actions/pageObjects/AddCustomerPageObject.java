@@ -118,9 +118,10 @@ public class AddCustomerPageObject extends BasePage {
 		sendkeyToElement(driver, passwordTextbox, password);		
 	}
 
-	public void clickToSubmitButton() {
+	public InfoCustomerPageObject clickToSubmitButton() {
 		waitForElementClickable(driver, submitButton);
 		clickToElement(driver, submitButton);
+		return PageGeneratorManager.getInfoCustomerPageObject(driver);
 	}
 
 }

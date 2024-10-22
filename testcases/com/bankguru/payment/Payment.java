@@ -7,6 +7,7 @@ import pageObjects.AddCustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.InfoCustomerPageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.PageGeneratorManager;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -26,20 +27,19 @@ public class Payment extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		loginPage = new LoginPageObject(driver);
+		loginPage = PageGeneratorManager.getLoginPageObject(driver);
 
 		loginPage.enterToUserIDTextbox("mngr597812");
 		loginPage.enterToPassword("qUtUzAb");
-
-		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		
+		homePage = loginPage.clickToLoginButton();
 		Assert.assertEquals(homePage.getManagerIdText(), "Manger Id : mngr597812");
 	}
 
 	@Test
 	public void P1_Create_New_Customer_Successfully() {
-		homePage.clickToAddNewCustomerLink();
-		addCustomerPage = new AddCustomerPageObject(driver);
+		
+		addCustomerPage = homePage.clickToAddNewCustomerLink();
 		Assert.assertEquals(addCustomerPage.getAddCustomerTextHeading(), "Add New Customer");
 
 		addCustomerPage.enterToCustomerNameTextbox("Dannie Zemlak IV");
@@ -53,8 +53,8 @@ public class Payment extends BaseTest {
 		addCustomerPage.enterMobileNumberTextbox("0842769114");
 		addCustomerPage.enterEmailTextbox(emailAddress);
 		addCustomerPage.enterPasswordTextbox("3454634");
-		addCustomerPage.clickToSubmitButton();
-		infoCustomerPage = new InfoCustomerPageObject(driver);
+		
+		infoCustomerPage = addCustomerPage.clickToSubmitButton();
 		
 		Assert.assertEquals(infoCustomerPage.getHeadingText(), "Customer Registered Successfully!!!");
 		Assert.assertEquals(infoCustomerPage.getCustomerNameText(), "Dannie Zemlak IV");
