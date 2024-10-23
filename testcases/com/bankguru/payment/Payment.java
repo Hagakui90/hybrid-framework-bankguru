@@ -22,6 +22,7 @@ public class Payment extends BaseTest {
 	private AddCustomerPageObject addCustomerPage;
 	private InfoCustomerPageObject infoCustomerPage;
 	private String emailAddress = "Dannie" + generateFakeNumber() + "@mail.us";
+	private String customerID;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -55,7 +56,8 @@ public class Payment extends BaseTest {
 		addCustomerPage.enterPasswordTextbox("3454634");
 		
 		infoCustomerPage = addCustomerPage.clickToSubmitButton();
-		
+		sleepInSecond(4);
+		customerID = infoCustomerPage.getCustomerIDText();
 		Assert.assertEquals(infoCustomerPage.getHeadingText(), "Customer Registered Successfully!!!");
 		Assert.assertEquals(infoCustomerPage.getCustomerNameText(), "Dannie Zemlak IV");
 		Assert.assertEquals(infoCustomerPage.getBirthdateText(), "1990-10-06");

@@ -17,6 +17,9 @@ public class InfoCustomerPageObject extends BasePage{
 	
 	@FindBy(css = "p.heading3")
 	private WebElement headingText;
+	
+	@FindBy(xpath = "//td[text()='Customer ID']/following-sibling::td")
+	private WebElement customerIDText;
 
 	@FindBy(xpath = "//td[text()='Customer Name']/following-sibling::td")
 	private WebElement customerNameText;
@@ -61,6 +64,11 @@ public class InfoCustomerPageObject extends BasePage{
 	public String getHeadingText() {
 		waitForElementVisible(driver, headingText);
 		return getElementText(driver, headingText);
+	}
+
+	public String getCustomerIDText() {
+		waitForElementVisible(driver, customerIDText);
+		return getElementText(driver, customerIDText);
 	}
 
 }
