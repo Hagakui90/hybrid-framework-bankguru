@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObjects.AddCustomerPageObject;
-import pageObjects.HomePageObject;
+import pageObjects.ManagerPageObject;
 import pageObjects.InfoCustomerPageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.PageGeneratorManager;
@@ -17,12 +17,12 @@ import org.testng.annotations.AfterClass;
 
 public class Payment extends BaseTest {
 	private WebDriver driver;
-	private HomePageObject homePage;
+	private ManagerPageObject homePage;
 	private LoginPageObject loginPage;
 	private AddCustomerPageObject addCustomerPage;
 	private InfoCustomerPageObject infoCustomerPage;
 	private String emailAddress = "Dannie" + generateFakeNumber() + "@mail.us";
-	private String customerID;
+	public String customerID;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -40,7 +40,7 @@ public class Payment extends BaseTest {
 	@Test
 	public void P1_Create_New_Customer_Successfully() {
 		
-		addCustomerPage = homePage.clickToAddNewCustomerLink();
+		addCustomerPage = homePage.clickToAddNewCustomerMenu();
 		Assert.assertEquals(addCustomerPage.getAddCustomerTextHeading(), "Add New Customer");
 
 		addCustomerPage.enterToCustomerNameTextbox("Dannie Zemlak IV");

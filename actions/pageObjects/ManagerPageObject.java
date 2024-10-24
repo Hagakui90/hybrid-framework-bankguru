@@ -5,9 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import commons.BasePage;
-
-public class HomePageObject extends BasePage {
+public class ManagerPageObject extends Guru99BankSideBarPageObject {
 	WebDriver driver;
 	
 	@FindBy(xpath = "//td[contains(text(),'Manger Id')]")
@@ -16,7 +14,8 @@ public class HomePageObject extends BasePage {
 	@FindBy(xpath = "//a[text()='New Customer']")
 	private WebElement newCustomerLink;
 	
-	public HomePageObject(WebDriver driver) {
+	public ManagerPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
 	}
@@ -24,10 +23,6 @@ public class HomePageObject extends BasePage {
 		waitForElementVisible(driver, heading3Text);
 		return getElementText(driver, heading3Text);
 	}
-	public AddCustomerPageObject clickToAddNewCustomerLink() {
-		waitForElementVisible(driver, newCustomerLink);
-		clickToElement(driver, newCustomerLink);
-		return PageGeneratorManager.getAddCustomerPageObject(driver);
-	}
+
 
 }

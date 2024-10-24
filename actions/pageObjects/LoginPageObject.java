@@ -37,10 +37,10 @@ public class LoginPageObject extends BasePage{
 		sendkeyToElement(driver, passwrordTextbox, password);	
 		
 	}
-	public HomePageObject clickToLoginButton() {
+	public ManagerPageObject clickToLoginButton() {
 		waitForElementClickable(driver, loginButton);
 		clickToElement(driver, loginButton);	
-		return PageGeneratorManager.getHomePageObject(driver);
+		return PageGeneratorManager.getManagerPage(driver);
 	}
 	
 
